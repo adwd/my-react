@@ -8,7 +8,7 @@ const prod = process.env.NODE_ENV === 'production';
 
 const config = {
   mode: 'production',
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   output: {
     filename: prod ? '[chunkhash].bundle.js' : 'bundle.js'
   },
