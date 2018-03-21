@@ -1,6 +1,7 @@
 import { sub } from './sub';
 
-console.log(sub(10, 3));
+const [x, y] = [10, 3];
+console.log(sub(x, y));
 
 const root = document.getElementById('root') as HTMLDivElement;
-root.textContent = 'hei';
+root.textContent = 'yoi';

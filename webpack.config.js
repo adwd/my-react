@@ -1,17 +1,20 @@
-import webpack from 'webpack';
-import path from 'path';
+const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const config: webpack.Configuration = {
+const prod = process.env.NODE_ENV === 'production';
+
+const config = {
   mode: 'production',
   entry: './src/index.ts',
   output: {
-    filename: '[chunkhash].bundle.js'
+    filename: prod ? '[chunkhash].bundle.js' : 'bundle.js'
   },
+  devtool: prod ? undefined : 'source-map',
   resolve: {
-    extensions: ['.ts', '.tsx']
+    extensions: ['.js', '.ts', '.tsx']
   },
   module: {
     rules: [
@@ -28,6 +31,6 @@ const config: webpack.Configuration = {
       to: ''
     }]),
   ]
-}
+};
 
-export default config;
+module.exports = config;
