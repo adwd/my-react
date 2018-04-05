@@ -18,7 +18,13 @@ const config = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, use: 'ts-loader' }
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: [
+          path.resolve(__dirname, "src/stories"),
+        ],
+      }
     ]
   },
   plugins: [
